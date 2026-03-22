@@ -26,10 +26,12 @@ register map is NDA-protected.
 | CPU speed       | 240 MHz         | 270 MHz         | 300 MHz         |
 | Program Flash   | 4 MB            | 4 MB            | 4 MB            |
 | Data Flash      | 192 KB          | 192 KB          | 192 KB          |
-| SRAM            | 128 KB          | 128 KB          | 288 KB          |
+| DSPR            | 128 KB          | 128 KB          | 128 KB          |
+| LMU SRAM        | 128 KB          | 128 KB          | 128 KB          |
+| PSPR            | 32 KB           | 32 KB           | 32 KB           |
 | FPU             | Yes             | Yes             | Yes             |
-| DMA channels    | 16              | 16              | 24              |
-| Safe DMA (SDMA) | 8               | 8               | —               |
+| DMA channels    | 16              | 16              | 16              |
+| Safe DMA (SDMA) | 8               | 8               | 8               |
 | FlexRay         | Yes (1 module)  | Yes (1 module)  | Yes (1 module)  |
 | CAN nodes       | 4               | 4               | 4               |
 | SSC channels    | 4               | 4               | 4               |
