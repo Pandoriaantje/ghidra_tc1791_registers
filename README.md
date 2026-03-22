@@ -72,6 +72,7 @@ TC1791 `384` parts confirmed from the datasheet:
 | `tc179x.pspec` | Processor spec for TC1791 `512` variants / TC1793 (ADC0-ADC2, `PFLASH1 = 2 MB`) |
 | `tc1798.pspec` | Processor spec for TC1798 (ADC0–ADC3) |
 | `patches/tc179x.ldefs.patch` | Patch adding TC179x, TC1791_384, and TC1798 language entries to Ghidra's `tricore.ldefs` |
+| `TC179xSplitFlashLoader/` | Ghidra extension that loads raw split-flash binaries into `PFLASH0` / `PFLASH1` automatically |
 
 ## Installation
 
@@ -94,11 +95,39 @@ Restart Ghidra. Three new variants will be available when importing a binary:
 - **"Infineon Tricore Embedded Processor TC1791 / TC1793 (512 variant, 4MB flash)"** (`tricore:LE:32:tc179x`) — for TC1791 `512` / TC1793
 - **"Infineon Tricore Embedded Processor TC1798 (512 variant, 4MB flash)"** (`tricore:LE:32:tc1798`) — for TC1798
 
+### 3. Optional: install the split-flash loader extension
+
+The included loader extension recognizes 3 MB and 4 MB TC179x raw binaries and maps them
+directly into `PFLASH0` / `PFLASH1` during import. This avoids the manual Memory Map steps
+described below.
+
+Build the extension:
+
+```sh
+cd TC179xSplitFlashLoader
+gradle buildExtension
+```
+
+This creates a zip file in `TC179xSplitFlashLoader/dist/`.
+
+Install it in Ghidra:
+
+- open `File -> Install Extensions`
+- click the `+` button
+- select the generated `ghidra_12.2_DEV_..._TC179xSplitFlashLoader.zip`
+- restart Ghidra
+
+After installation, choose **TC179x Split Flash Binary Loader** when importing a raw `.bin`.
+The loader offers the same three language choices (`tc1791_384`, `tc179x`, `tc1798`) and
+creates the flash blocks from the correct file offsets automatically.
+
 ## Loading Raw Flash Binaries
 
-The pspec files create the correct memory blocks and addresses, but they do not attach file
-offsets automatically. After importing a raw `.bin`, you still need to map the file bytes to
-the existing `PFLASH0` / `PFLASH1` blocks in Ghidra.
+If you use the loader extension above, Ghidra maps the flash banks automatically.
+
+If you do not use the loader extension, the pspec files create the correct memory blocks and
+addresses, but they do not attach file offsets automatically. After importing a raw `.bin`,
+you still need to map the file bytes to the existing `PFLASH0` / `PFLASH1` blocks in Ghidra.
 
 ### 1. Pick the correct language when importing
 

@@ -1,0 +1,1 @@
+apply from: "/opt/ghidra/support/buildExtension.gradle"
