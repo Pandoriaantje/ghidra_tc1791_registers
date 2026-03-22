@@ -120,7 +120,7 @@ For 4 MB devices (`tc179x`, `tc1798`):
 | `PFLASH0` | `0x80000000` | `0x200000` | `0x000000` |
 | `PFLASH1` | `0x80800000` | `0x200000` | `0x200000` |
 
-For TC1791 `384` devices (`tc1791_384`):
+For 3 MB devices (`tc1791_384`):
 
 | Block | Start address | Length | File offset |
 |------|---------------|--------|-------------|
