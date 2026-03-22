@@ -10,9 +10,9 @@
   <data_space space="ram"/>
   
   <default_memory_blocks>
-  <memory_block name="PSPR" start_address="0xC0000000" length="0x7fff"  mode="rwv" initialized="false"/>
-  <memory_block name="LDRAM" start_address="0xD0000000" length="0x1FFFF" mode="rwv" initialized="false"/>
-  <memory_block name="LMURAM" start_address="0xB0000000" length="0x1FFFF" mode="rwv" initialized="false"/>
+  <memory_block name="PSPR" start_address="0xC0000000" length="0x8000"  mode="rwv" initialized="false"/>
+  <memory_block name="LDRAM" start_address="0xD0000000" length="0x20000" mode="rwv" initialized="false"/>
+  <memory_block name="LMURAM" start_address="0xB0000000" length="0x20000" mode="rwv" initialized="false"/>
   <memory_block name="SCUWDT" start_address="0xf0000500" length="0x200" mode="rwv" initialized="false"/>
 	<memory_block name="SBCU" start_address="0xf0000100" length="0x100" mode="rwv" initialized="false"/>
   <memory_block name="STM" start_address="0xf0000200" length="0x100" mode="rwv" initialized="false"/>
