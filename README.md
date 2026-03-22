@@ -41,7 +41,7 @@ Infineon for further SHE details.
 | SSC channels    | 4               | 4               | 4               | 4               |
 | ASC channels    | 2               | 2               | 2               | 2               |
 | MLI interfaces  | 2               | 2               | 2               | 2               |
-| ADC inputs      | 44-48 (3 kernels) | 44-48 (3 kernels) | 44 (3 kernels)  | 64 (4 kernels)  |
+| ADC inputs      | 44 (3 kernels)  | 44 or 48 (3 kernels) | 44 (3 kernels)  | 64 (4 kernels)  |
 | FADC inputs     | 4               | 4               | 4               | 4               |
 | SENT channels   | 8               | 8               | 8               | 8               |
 | FCE             | Yes             | Yes             | Yes             | Yes             |
