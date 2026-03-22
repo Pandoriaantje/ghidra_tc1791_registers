@@ -23,28 +23,30 @@ Infineon for further SHE details.
 
 ## TC179x Family Comparison
 
-| Feature         | TC1791          | TC1793          | TC1798          |
-|-----------------|-----------------|-----------------|-----------------|
-| CPU speed       | 240 MHz         | 270 MHz         | 300 MHz         |
-| Program Flash   | 4 MB            | 4 MB            | 4 MB            |
-| Data Flash      | 192 KB          | 192 KB          | 192 KB          |
-| DSPR            | 128 KB          | 128 KB          | 128 KB          |
-| LMU SRAM        | 128 KB          | 128 KB          | 128 KB          |
-| PSPR            | 32 KB           | 32 KB           | 32 KB           |
-| FPU             | Yes             | Yes             | Yes             |
-| DMA channels    | 16              | 16              | 16              |
-| Safe DMA (SDMA) | 8               | 8               | 8               |
-| FlexRay         | Yes (1 module)  | Yes (1 module)  | Yes (1 module)  |
-| CAN nodes       | 4               | 4               | 4               |
-| SSC channels    | 4               | 4               | 4               |
-| ASC channels    | 2               | 2               | 2               |
-| MLI interfaces  | 2               | 2               | 2               |
-| ADC channels    | 44 (3 kernels)  | 44 (3 kernels)  | 64 (4 kernels)  |
-| FADC channels   | 4               | 4               | 4               |
-| SENT channels   | 8               | 8               | 8               |
-| FCE             | Yes             | Yes             | Yes             |
-| SHE             | Some variants   | Some variants   | Yes             |
-| Package         | BGA292          | BGA416          | BGA516          |
+| Feature         | TC1791 384      | TC1791 512      | TC1793          | TC1798          |
+|-----------------|-----------------|-----------------|-----------------|-----------------|
+| CPU speed       | 200 MHz         | 240 MHz         | 270 MHz         | 300 MHz         |
+| Program Flash   | 3 MB            | 4 MB            | 4 MB            | 4 MB            |
+| PFLASH0         | 2 MB            | 2 MB            | 2 MB            | 2 MB            |
+| PFLASH1         | 1 MB            | 2 MB            | 2 MB            | 2 MB            |
+| Data Flash      | 192 KB          | 192 KB          | 192 KB          | 192 KB          |
+| DSPR            | 128 KB          | 128 KB          | 128 KB          | 128 KB          |
+| LMU SRAM        | 128 KB          | 128 KB          | 128 KB          | 128 KB          |
+| PSPR            | 32 KB           | 32 KB           | 32 KB           | 32 KB           |
+| FPU             | Yes             | Yes             | Yes             | Yes             |
+| DMA channels    | 16              | 16              | 16              | 16              |
+| Safe DMA (SDMA) | 8               | 8               | 8               | 8               |
+| FlexRay         | Some variants   | Some variants   | Yes (1 module)  | Yes (1 module)  |
+| CAN nodes       | 4               | 4               | 4               | 4               |
+| SSC channels    | 4               | 4               | 4               | 4               |
+| ASC channels    | 2               | 2               | 2               | 2               |
+| MLI interfaces  | 2               | 2               | 2               | 2               |
+| ADC channels    | 44 (3 kernels)  | 44 (3 kernels)  | 44 (3 kernels)  | 64 (4 kernels)  |
+| FADC channels   | 4               | 4               | 4               | 4               |
+| SENT channels   | 8               | 8               | 8               | 8               |
+| FCE             | Yes             | Yes             | Yes             | Yes             |
+| SHE             | Some variants   | Some variants   | Some variants   | Yes             |
+| Package         | BGA292          | BGA292          | BGA416          | BGA516          |
 
 ## Derivative Split
 
