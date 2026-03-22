@@ -80,13 +80,13 @@
 	<memory_block name="LBCU" start_address="0xf87FFE00" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="LFI" start_address="0xf87FFF00" length="0x100" mode="rwv" initialized="false"/>
 	<!-- Flash arrays: cached (0x8...) and non-cached (0xA...) mirrors -->
-	<!-- TC1791 "512" variants + all TC1793: PMU0 = 2 MB, PMU1 = 2 MB (4 MB total) -->
-	<!-- TC1791 "384" variants use tc1791_384.pspec instead (PMU1 = 1 MB) -->
+	<!-- TC1791 "384" variants: PMU0 = 2 MB, PMU1 = 1 MB (3 MB total) -->
+	<!-- Parts: SAK-TC1791F-384F200EL/EP, SAK-TC1791S-384F200EP, SAK-TC1791N-384F200EP -->
 	<memory_block name="PFLASH0"    start_address="0x80000000" length="0x200000" mode="rx"  initialized="false"/>
-	<memory_block name="PFLASH1"    start_address="0x80800000" length="0x200000" mode="rx"  initialized="false"/>
+	<memory_block name="PFLASH1"    start_address="0x80800000" length="0x100000" mode="rx"  initialized="false"/>
 	<memory_block name="BROM0"      start_address="0x8FFFC000" length="0x4000"   mode="rx"  initialized="false"/>
 	<memory_block name="PFLASH0_NC" start_address="0xA0000000" length="0x200000" mode="rx"  initialized="false"/>
-	<memory_block name="PFLASH1_NC" start_address="0xA0800000" length="0x200000" mode="rx"  initialized="false"/>
+	<memory_block name="PFLASH1_NC" start_address="0xA0800000" length="0x100000" mode="rx"  initialized="false"/>
 	<memory_block name="DFLASH0_B0" start_address="0xAF000000" length="0x18000"  mode="rwv" initialized="false"/>
 	<memory_block name="DFLASH0_B1" start_address="0xAF080000" length="0x18000"  mode="rwv" initialized="false"/>
 	<memory_block name="BROM0_NC"   start_address="0xAFFFC000" length="0x4000"   mode="rx"  initialized="false"/>

@@ -3,16 +3,18 @@
 Adds support for the **Infineon TC179x** and **TC1798** (AUDO MAX family) to Ghidra's
 TriCore processor module.
 
-Two processor spec files are provided:
+Three processor spec files are provided:
 
 | File | Chip(s) | ADC kernels |
 |------|---------|-------------|
-| `tc179x.pspec` | TC1791, TC1793 | ADC0, ADC1, ADC2 |
+| `tc179x.pspec` | TC1791 "512" variants, TC1793 | ADC0, ADC1, ADC2 |
+| `tc1791_384.pspec` | TC1791 "384" variants | ADC0, ADC1, ADC2 |
 | `tc1798.pspec` | TC1798 | ADC0, ADC1, ADC2, ADC3 |
 
-The `tc179x.pspec` was developed and tested against the **TC1791**. The TC1793 shares
-the same peripheral address map and uses the same file. The TC1798 adds a fourth ADC
-kernel (ADC3 at `0xF010_1C00`) and uses `tc1798.pspec`.
+The `tc179x.pspec` covers all 4 MB devices with `PFLASH0 = 2 MB` and `PFLASH1 = 2 MB`.
+The `tc1791_384.pspec` is for the TC1791 3 MB devices where `PFLASH0 = 2 MB` and
+`PFLASH1 = 1 MB`. The TC1798 adds a fourth ADC kernel (ADC3 at `0xF010_1C00`) and
+uses `tc1798.pspec`.
 
 **Note:** SHE (Secure Hardware Extension) registers appear in both files. SHE is present
 in TC1798 and in some TC1793 variants (e.g. SAK-TC1793F-512F270EF), but not in the
@@ -44,20 +46,36 @@ register map is NDA-protected.
 | SHE             | Some variants   | Some variants   | Yes             |
 | Package         | BGA292          | BGA416          | BGA516          |
 
+## Derivative Split
+
+| Ghidra language | Chip(s) | Flash layout |
+|-----------------|---------|--------------|
+| `tricore:LE:32:tc179x` | TC1791 `512` variants, all TC1793 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB` |
+| `tricore:LE:32:tc1791_384` | TC1791 `384` variants only | `PFLASH0 = 2 MB`, `PFLASH1 = 1 MB` |
+| `tricore:LE:32:tc1798` | TC1798 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB`, plus ADC3 |
+
+TC1791 `384` parts confirmed from the datasheet:
+
+- `SAK-TC1791F-384F200EL`
+- `SAK-TC1791F-384F200EP`
+- `SAK-TC1791S-384F200EP`
+- `SAK-TC1791N-384F200EP`
+
 ## Contents
 
 | File | Description |
 |------|-------------|
-| `tc179x.pspec` | Processor spec for TC1791 / TC1793 (ADC0–ADC2, no ADC3) |
+| `tc179x.pspec` | Processor spec for TC1791 `512` variants / TC1793 (ADC0-ADC2, `PFLASH1 = 2 MB`) |
+| `tc1791_384.pspec` | Processor spec for TC1791 `384` variants (ADC0-ADC2, `PFLASH1 = 1 MB`) |
 | `tc1798.pspec` | Processor spec for TC1798 (ADC0–ADC3) |
-| `patches/tc179x.ldefs.patch` | Patch adding TC179x and TC1798 language entries to Ghidra's `tricore.ldefs` |
+| `patches/tc179x.ldefs.patch` | Patch adding TC179x, TC1791_384, and TC1798 language entries to Ghidra's `tricore.ldefs` |
 
 ## Installation
 
 ### 1. Copy the processor specs
 
 ```sh
-sudo cp tc179x.pspec tc1798.pspec /opt/ghidra/Ghidra/Processors/tricore/data/languages/
+sudo cp tc179x.pspec tc1791_384.pspec tc1798.pspec /opt/ghidra/Ghidra/Processors/tricore/data/languages/
 ```
 
 ### 2. Patch the language definitions
@@ -67,15 +85,63 @@ cd /opt/ghidra/Ghidra/Processors/tricore/data/languages
 sudo patch -p1 < /path/to/patches/tc179x.ldefs.patch
 ```
 
-Restart Ghidra. Two new variants will be available when importing a binary:
+Restart Ghidra. Three new variants will be available when importing a binary:
 
-- **"Infineon Tricore Embedded Processor TC179x"** (`tricore:LE:32:tc179x`) — for TC1791 / TC1793
+- **"Infineon Tricore Embedded Processor TC179x"** (`tricore:LE:32:tc179x`) — for TC1791 `512` / TC1793
+- **"Infineon Tricore Embedded Processor TC1791_384"** (`tricore:LE:32:tc1791_384`) — for TC1791 `384`
 - **"Infineon Tricore Embedded Processor TC1798"** (`tricore:LE:32:tc1798`) — for TC1798
+
+## Loading Raw Flash Binaries
+
+The pspec files create the correct memory blocks and addresses, but they do not attach file
+offsets automatically. After importing a raw `.bin`, you still need to map the file bytes to
+the existing `PFLASH0` / `PFLASH1` blocks in Ghidra.
+
+### 1. Pick the correct language when importing
+
+- Use `tricore:LE:32:tc179x` for TC1791 `512` and all TC1793 images
+- Use `tricore:LE:32:tc1791_384` for TC1791 `384` images
+- Use `tricore:LE:32:tc1798` for TC1798 images
+
+Import as **Raw Binary** with base address `0x80000000`.
+
+### 2. Open the Memory Map
+
+- In Ghidra, open `Window -> Memory Map`
+- You should already see `PFLASH0` and `PFLASH1` from the pspec
+- Do not add new blocks at the same addresses; edit the existing ones
+
+### 3. Map file bytes to the flash blocks
+
+For 4 MB devices (`tc179x`, `tc1798`):
+
+| Block | Start address | Length | File offset |
+|------|---------------|--------|-------------|
+| `PFLASH0` | `0x80000000` | `0x200000` | `0x000000` |
+| `PFLASH1` | `0x80800000` | `0x200000` | `0x200000` |
+
+For TC1791 `384` devices (`tc1791_384`):
+
+| Block | Start address | Length | File offset |
+|------|---------------|--------|-------------|
+| `PFLASH0` | `0x80000000` | `0x200000` | `0x000000` |
+| `PFLASH1` | `0x80800000` | `0x100000` | `0x200000` |
+
+When editing each block:
+
+- select the existing `PFLASH0` or `PFLASH1` row
+- choose **File Bytes**
+- select your imported binary in the `File Bytes` dropdown
+- set the correct `File Offset`
+- keep flash blocks `Read = on`, `Execute = on`, `Write = off`
+
+If you try to add a new block at `0x80000000` or `0x80800000`, Ghidra will report a block
+address conflict because those blocks already exist.
 
 ## Notes
 
-- The patch only adds the TC179x and TC1798 entries; it does not touch any existing language
-  definitions.
+- The patch only adds the TC179x, TC1791_384, and TC1798 entries; it does not touch any
+  existing language definitions.
 - If the patch fails after a Ghidra upgrade, inspect `tricore.ldefs` for context changes around
   the `</language_definitions>` closing tag and regenerate the patch accordingly.
 - Tested against Ghidra 11.x (`tricore.ldefs` version 1.7).
