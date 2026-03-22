@@ -80,6 +80,15 @@
 	<memory_block name="CPU.PMI" start_address="0xf87FFD00" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="LBCU" start_address="0xf87FFE00" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="LFI" start_address="0xf87FFF00" length="0x100" mode="rwv" initialized="false"/>
+	<!-- Flash arrays: cached (0x8...) and non-cached (0xA...) mirrors -->
+	<memory_block name="PFLASH0"    start_address="0x80000000" length="0x200000" mode="rx"  initialized="false"/>
+	<memory_block name="PFLASH1"    start_address="0x80800000" length="0x200000" mode="rx"  initialized="false"/>
+	<memory_block name="BROM0"      start_address="0x8FFFC000" length="0x4000"   mode="rx"  initialized="false"/>
+	<memory_block name="PFLASH0_NC" start_address="0xA0000000" length="0x200000" mode="rx"  initialized="false"/>
+	<memory_block name="PFLASH1_NC" start_address="0xA0800000" length="0x200000" mode="rx"  initialized="false"/>
+	<memory_block name="DFLASH0_B0" start_address="0xAF000000" length="0x18000"  mode="rwv" initialized="false"/>
+	<memory_block name="DFLASH0_B1" start_address="0xAF080000" length="0x18000"  mode="rwv" initialized="false"/>
+	<memory_block name="BROM0_NC"   start_address="0xAFFFC000" length="0x4000"   mode="rx"  initialized="false"/>
   </default_memory_blocks>
 
   <default_symbols>
