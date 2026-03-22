@@ -25,24 +25,24 @@ Infineon for further SHE details.
 
 | Feature         | TC1791 384      | TC1791 512      | TC1793          | TC1798          |
 |-----------------|-----------------|-----------------|-----------------|-----------------|
-| CPU speed       | 200 MHz         | 200-240 MHz     | 200-270 MHz     | 300 MHz         |
-| Program Flash   | 3 MB            | 4 MB            | 4 MB            | 4 MB            |
+| CPU speed range | 200 MHz         | 200-240 MHz     | 200-270 MHz     | 300 MHz         |
+| Total PFLASH    | 3 MB            | 4 MB            | 4 MB            | 4 MB            |
 | PFLASH0         | 2 MB            | 2 MB            | 2 MB            | 2 MB            |
 | PFLASH1         | 1 MB            | 2 MB            | 2 MB            | 2 MB            |
-| Data Flash      | 192 KB          | 192 KB          | 192 KB          | 192 KB          |
+| DFLASH          | 192 KB          | 192 KB          | 192 KB          | 192 KB          |
 | DSPR            | 128 KB          | 128 KB          | 128 KB          | 128 KB          |
 | LMU SRAM        | 128 KB          | 128 KB          | 128 KB          | 128 KB          |
 | PSPR            | 32 KB           | 32 KB           | 32 KB           | 32 KB           |
 | FPU             | Yes             | Yes             | Yes             | Yes             |
 | DMA channels    | 16              | 16              | 16              | 16              |
 | Safe DMA (SDMA) | 8               | 8               | 8               | 8               |
-| FlexRay         | Some variants   | Some variants   | Some variants   | Some variants   |
+| FlexRay (E-Ray) | Some variants   | Some variants   | Some variants   | Some variants   |
 | CAN nodes       | 4               | 4               | 4               | 4               |
 | SSC channels    | 4               | 4               | 4               | 4               |
 | ASC channels    | 2               | 2               | 2               | 2               |
 | MLI interfaces  | 2               | 2               | 2               | 2               |
-| ADC channels    | 44-48 (3 kernels) | 44-48 (3 kernels) | 44 (3 kernels)  | 64 (4 kernels)  |
-| FADC channels   | 4               | 4               | 4               | 4               |
+| ADC inputs      | 44-48 (3 kernels) | 44-48 (3 kernels) | 44 (3 kernels)  | 64 (4 kernels)  |
+| FADC inputs     | 4               | 4               | 4               | 4               |
 | SENT channels   | 8               | 8               | 8               | 8               |
 | FCE             | Yes             | Yes             | Yes             | Yes             |
 | SHE             | Some variants   | Some variants   | Some variants   | Yes             |
