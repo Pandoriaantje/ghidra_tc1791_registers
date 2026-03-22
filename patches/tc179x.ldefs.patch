@@ -39,7 +39,7 @@
 +            processorspec="tc1798.pspec"
 +	    manualindexfile="../manuals/tricore.idx"
 +            id="tricore:LE:32:tc1798">
-+    <description>Infineon Tricore Embedded Processor TC1798</description>
++    <description>Infineon Tricore Embedded Processor TC1798 (512 variant, 4MB flash)</description>
 +    <compiler name="default" spec="tricore.cspec" id="default"/>
 +    <external_name tool="DWARF.register.mapping.file" name="tricore.dwarf"/>
 +  </language>
