@@ -13,7 +13,7 @@
 +            processorspec="tc179x.pspec"
 +	    manualindexfile="../manuals/tricore.idx"
 +            id="tricore:LE:32:tc179x">
-+    <description>Infineon Tricore Embedded Processor TC179x / TC1793 (4MB flash)</description>
++    <description>Infineon Tricore Embedded Processor TC1791 / TC1793 (512 variant, 4MB flash)</description>
 +    <compiler name="default" spec="tricore.cspec" id="default"/>
 +    <external_name tool="DWARF.register.mapping.file" name="tricore.dwarf"/>
 +  </language>
