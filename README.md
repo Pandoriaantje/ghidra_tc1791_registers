@@ -11,10 +11,10 @@ Three processor spec files are provided:
 | `tc179x.pspec` | TC1791 `512` variants and all TC1793 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB` | ADC0, ADC1, ADC2 |
 | `tc1798.pspec` | TC1798 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB` | ADC0, ADC1, ADC2, ADC3 |
 
-The `tc179x.pspec` covers all 4 MB devices with `PFLASH0 = 2 MB` and `PFLASH1 = 2 MB`.
 The `tc1791_384.pspec` is for the TC1791 3 MB devices where `PFLASH0 = 2 MB` and
-`PFLASH1 = 1 MB`. The TC1798 adds a fourth ADC kernel (ADC3 at `0xF010_1C00`) and
-uses `tc1798.pspec`.
+`PFLASH1 = 1 MB`. The `tc179x.pspec` covers all 4 MB TC1791 / TC1793 devices with
+`PFLASH0 = 2 MB` and `PFLASH1 = 2 MB`. The TC1798 adds a fourth ADC kernel (ADC3 at
+`0xF010_1C00`) and uses `tc1798.pspec`.
 
 **Note:** SHE (Secure Hardware Extension) registers appear in all three processor spec
 files. SHE is present on TC1798 and on some TC1791/TC1793 variants. The public
@@ -50,8 +50,8 @@ Infineon for further SHE details.
 
 | Ghidra language | Chip(s) | Flash layout |
 |-----------------|---------|--------------|
-| `tricore:LE:32:tc179x` | TC1791 `512` variants, all TC1793 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB` |
 | `tricore:LE:32:tc1791_384` | TC1791 `384` variants only | `PFLASH0 = 2 MB`, `PFLASH1 = 1 MB` |
+| `tricore:LE:32:tc179x` | TC1791 `512` variants, all TC1793 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB` |
 | `tricore:LE:32:tc1798` | TC1798 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB`, plus ADC3 |
 
 TC1791 `384` parts confirmed from the datasheet:
@@ -65,8 +65,8 @@ TC1791 `384` parts confirmed from the datasheet:
 
 | File | Description |
 |------|-------------|
-| `tc179x.pspec` | Processor spec for TC1791 `512` variants / TC1793 (ADC0-ADC2, `PFLASH1 = 2 MB`) |
 | `tc1791_384.pspec` | Processor spec for TC1791 `384` variants (ADC0-ADC2, `PFLASH1 = 1 MB`) |
+| `tc179x.pspec` | Processor spec for TC1791 `512` variants / TC1793 (ADC0-ADC2, `PFLASH1 = 2 MB`) |
 | `tc1798.pspec` | Processor spec for TC1798 (ADC0–ADC3) |
 | `patches/tc179x.ldefs.patch` | Patch adding TC179x, TC1791_384, and TC1798 language entries to Ghidra's `tricore.ldefs` |
 
@@ -75,7 +75,7 @@ TC1791 `384` parts confirmed from the datasheet:
 ### 1. Copy the processor specs
 
 ```sh
-sudo cp tc179x.pspec tc1791_384.pspec tc1798.pspec /opt/ghidra/Ghidra/Processors/tricore/data/languages/
+sudo cp tc1791_384.pspec tc179x.pspec tc1798.pspec /opt/ghidra/Ghidra/Processors/tricore/data/languages/
 ```
 
 ### 2. Patch the language definitions
@@ -99,8 +99,8 @@ the existing `PFLASH0` / `PFLASH1` blocks in Ghidra.
 
 ### 1. Pick the correct language when importing
 
-- Use `tricore:LE:32:tc179x` for TC1791 `512` and all TC1793 images
 - Use `tricore:LE:32:tc1791_384` for TC1791 `384` images
+- Use `tricore:LE:32:tc179x` for TC1791 `512` and all TC1793 images
 - Use `tricore:LE:32:tc1798` for TC1798 images
 
 Import as **Raw Binary** with base address `0x80000000`.
@@ -113,19 +113,19 @@ Import as **Raw Binary** with base address `0x80000000`.
 
 ### 3. Map file bytes to the flash blocks
 
-For 4 MB devices (`tc179x`, `tc1798`):
-
-| Block | Start address | Length | File offset |
-|------|---------------|--------|-------------|
-| `PFLASH0` | `0x80000000` | `0x200000` | `0x000000` |
-| `PFLASH1` | `0x80800000` | `0x200000` | `0x200000` |
-
 For 3 MB devices (`tc1791_384`):
 
 | Block | Start address | Length | File offset |
 |------|---------------|--------|-------------|
 | `PFLASH0` | `0x80000000` | `0x200000` | `0x000000` |
 | `PFLASH1` | `0x80800000` | `0x100000` | `0x200000` |
+
+For 4 MB devices (`tc179x`, `tc1798`):
+
+| Block | Start address | Length | File offset |
+|------|---------------|--------|-------------|
+| `PFLASH0` | `0x80000000` | `0x200000` | `0x000000` |
+| `PFLASH1` | `0x80800000` | `0x200000` | `0x200000` |
 
 When editing each block:
 
