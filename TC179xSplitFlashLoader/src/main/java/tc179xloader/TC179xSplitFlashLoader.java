@@ -61,15 +61,19 @@ public class TC179xSplitFlashLoader extends AbstractProgramLoader {
             return loadSpecs;
         }
 
-        loadSpecs.add(new LoadSpec(this, PFLASH0_ADDR,
-            new LanguageCompilerSpecPair("tricore:LE:32:tc1791_384", "default"),
-            size == SIZE_3MB));
-        loadSpecs.add(new LoadSpec(this, PFLASH0_ADDR,
-            new LanguageCompilerSpecPair("tricore:LE:32:tc179x", "default"),
-            size == SIZE_4MB));
-        loadSpecs.add(new LoadSpec(this, PFLASH0_ADDR,
-            new LanguageCompilerSpecPair("tricore:LE:32:tc1798", "default"),
-            false));
+        if (size == SIZE_3MB) {
+            loadSpecs.add(new LoadSpec(this, PFLASH0_ADDR,
+                new LanguageCompilerSpecPair("tricore:LE:32:tc1791_384", "default"),
+                true));
+        }
+        else {
+            loadSpecs.add(new LoadSpec(this, PFLASH0_ADDR,
+                new LanguageCompilerSpecPair("tricore:LE:32:tc179x", "default"),
+                true));
+            loadSpecs.add(new LoadSpec(this, PFLASH0_ADDR,
+                new LanguageCompilerSpecPair("tricore:LE:32:tc1798", "default"),
+                false));
+        }
 
         return loadSpecs;
     }
@@ -100,8 +104,9 @@ public class TC179xSplitFlashLoader extends AbstractProgramLoader {
             pflash1Len = PFLASH1_LEN_4MB;
         }
 
-        if (size < PFLASH0_LEN + pflash1Len) {
-            throw new LoadException("Input file too small for selected memory layout");
+        long expectedSize = PFLASH0_LEN + pflash1Len;
+        if (size != expectedSize) {
+            throw new LoadException("Input file size does not match selected memory layout");
         }
 
         int tx = program.startTransaction("Load TC179x split flash");

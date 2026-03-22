@@ -105,7 +105,7 @@ Build the extension:
 
 ```sh
 cd TC179xSplitFlashLoader
-gradle buildExtension
+GHIDRA_INSTALL_DIR=/opt/ghidra gradle buildExtension
 ```
 
 This creates a zip file in `TC179xSplitFlashLoader/dist/`.

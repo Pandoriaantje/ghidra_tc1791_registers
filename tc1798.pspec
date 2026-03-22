@@ -64,6 +64,13 @@
 	<memory_block name="MLI1stw" start_address="0xf01e8000" length="0x8000" mode="rwv" initialized="false"/>
 	<memory_block name="MLI0ltw" start_address="0xf0200000" length="0x40000" mode="rwv" initialized="false"/>
 	<memory_block name="MLI1ltw" start_address="0xf0240000" length="0x40000" mode="rwv" initialized="false"/>
+	<memory_block name="PORT12" start_address="0xF0300000" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="PORT13" start_address="0xF0300100" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="PORT14" start_address="0xF0300200" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="PORT15" start_address="0xF0300300" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="PORT16" start_address="0xF0300400" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="PORT17" start_address="0xF0300500" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="PORT18" start_address="0xF0300600" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="FCE" start_address="0xf0320000" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="SHE" start_address="0xf0320200" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="SENT" start_address="0xf0321000" length="0xa00" mode="rwv" initialized="false"/>
@@ -71,6 +78,9 @@
 	<memory_block name="BMURAM" start_address="0xf0324000" length="0x2000" mode="rwv" initialized="false"/>
 	<memory_block name="CPU.CPS" start_address="0xf7E0FF00" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="CPU.SFRGPR" start_address="0xf7E10000" length="0x10000" mode="rwv" initialized="false"/>
+	<memory_block name="XBAR" start_address="0xF8700000" length="0x500" mode="rwv" initialized="false"/>
+	<memory_block name="LMU" start_address="0xF8700800" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="OVC" start_address="0xF87FFB20" length="0xC0" mode="rwv" initialized="false"/>
 	<memory_block name="EBU" start_address="0xf8000000" length="0x400" mode="rwv" initialized="false"/>
 	<memory_block name="PMU" start_address="0xf8000500" length="0x100" mode="rwv" initialized="false"/>
   <memory_block name="PMU1" start_address="0xf8000600" length="0x100" mode="rwv" initialized="false"/>

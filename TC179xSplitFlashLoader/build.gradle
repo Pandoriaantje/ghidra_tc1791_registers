@@ -1,1 +1,11 @@
-apply from: "/opt/ghidra/support/buildExtension.gradle"
+if (!project.hasProperty("GHIDRA_INSTALL_DIR")) {
+    def envDir = System.getenv("GHIDRA_INSTALL_DIR")
+    if (envDir) {
+        project.ext.GHIDRA_INSTALL_DIR = envDir
+    }
+    else {
+        project.ext.GHIDRA_INSTALL_DIR = "/opt/ghidra"
+    }
+}
+
+apply from: new File(project.ext.GHIDRA_INSTALL_DIR, "support/buildExtension.gradle")
