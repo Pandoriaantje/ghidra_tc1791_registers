@@ -104,13 +104,15 @@ public class TC179xSplitFlashLoader extends AbstractProgramLoader {
             throw new LoadException("Input file too small for selected memory layout");
         }
 
-        createDefaultMemoryBlocks(program, settings);
-
-        FileBytes fileBytes = MemoryBlockUtils.createFileBytes(program, provider, settings.monitor());
-        Address pflash0 = program.getAddressFactory().getDefaultAddressSpace().getAddress(PFLASH0_ADDR);
-        Address pflash1 = program.getAddressFactory().getDefaultAddressSpace().getAddress(PFLASH1_ADDR);
-
+        int tx = program.startTransaction("Load TC179x split flash");
+        boolean commit = false;
         try {
+            createDefaultMemoryBlocks(program, settings);
+
+            FileBytes fileBytes = MemoryBlockUtils.createFileBytes(program, provider, settings.monitor());
+            Address pflash0 = program.getAddressFactory().getDefaultAddressSpace().getAddress(PFLASH0_ADDR);
+            Address pflash1 = program.getAddressFactory().getDefaultAddressSpace().getAddress(PFLASH1_ADDR);
+
             if (program.getMemory().getBlock(pflash0) != null) {
                 program.getMemory().removeBlock(program.getMemory().getBlock(pflash0), settings.monitor());
             }
@@ -122,9 +124,13 @@ public class TC179xSplitFlashLoader extends AbstractProgramLoader {
                 PFLASH0_FILE_OFFSET, PFLASH0_LEN, "", "TC179x PFLASH0", true, false, true, log);
             MemoryBlockUtils.createInitializedBlock(program, false, "PFLASH1", pflash1, fileBytes,
                 PFLASH1_FILE_OFFSET, pflash1Len, "", "TC179x PFLASH1", true, false, true, log);
+            commit = true;
         }
         catch (LockException | ghidra.program.model.address.AddressOverflowException e) {
             throw new LoadException("Failed to create split flash blocks", e);
+        }
+        finally {
+            program.endTransaction(tx, commit);
         }
     }
 }
