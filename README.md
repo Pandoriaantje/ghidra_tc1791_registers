@@ -16,10 +16,10 @@ The `tc1791_384.pspec` is for the TC1791 3 MB devices where `PFLASH0 = 2 MB` and
 `PFLASH1 = 1 MB`. The TC1798 adds a fourth ADC kernel (ADC3 at `0xF010_1C00`) and
 uses `tc1798.pspec`.
 
-**Note:** SHE (Secure Hardware Extension) registers appear in both files. SHE is present
-in TC1798 and in some TC1793 variants (e.g. SAK-TC1793F-512F270EF), but not in the
-base TC1791. Only the three publicly documented SHE registers are listed — the full SHE
-register map is NDA-protected.
+**Note:** SHE (Secure Hardware Extension) registers appear in all three processor spec
+files. SHE is present on TC1798 and on some TC1791/TC1793 variants. The public
+documentation names only a small number of SHE registers and directs readers to contact
+Infineon for further SHE details.
 
 ## TC179x Family Comparison
 
