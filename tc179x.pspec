@@ -13,7 +13,7 @@
   <memory_block name="PSPR" start_address="0xC0000000" length="0x7fff"  mode="rwv" initialized="false"/>
   <memory_block name="LDRAM" start_address="0xD0000000" length="0x1FFFF" mode="rwv" initialized="false"/>
   <memory_block name="LMURAM" start_address="0xB0000000" length="0x1FFFF" mode="rwv" initialized="false"/>
-  <memory_block name="SCUWDT" start_address="0xF0000000" length="0x100" mode="rwv" initialized="false"/>
+  <memory_block name="SCUWDT" start_address="0xf0000500" length="0x200" mode="rwv" initialized="false"/>
 	<memory_block name="SBCU" start_address="0xf0000100" length="0x100" mode="rwv" initialized="false"/>
   <memory_block name="STM" start_address="0xf0000200" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="CERBERUS" start_address="0xf0000400" length="0x100" mode="rwv" initialized="false"/>
@@ -33,17 +33,30 @@
 	<memory_block name="PORT10" start_address="0xf0001600" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="PORT11" start_address="0xf0001700" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="GPTA0" start_address="0xf0001800" length="0x800" mode="rwv" initialized="false"/>
-  <memory_block name="GPTA1" start_address="0xf000200" length="0x800" mode="rwv" initialized="false"/>
+  <memory_block name="GPTA1" start_address="0xf0002000" length="0x800" mode="rwv" initialized="false"/>
+	<memory_block name="LTCA2" start_address="0xf0002800" length="0x800" mode="rwv" initialized="false"/>
+	<memory_block name="CCU60" start_address="0xf0003000" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="CCU61" start_address="0xf0003100" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="CCU62" start_address="0xf0003200" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="CCU63" start_address="0xf0003300" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="GPT120" start_address="0xf0003400" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="GPT121" start_address="0xf0003500" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="SDMA" start_address="0xf0003800" length="0x300" mode="rwv" initialized="false"/>
 	<memory_block name="DMA" start_address="0xf0003C00" length="0x300" mode="rwv" initialized="false"/>
 	<memory_block name="CAN" start_address="0xf0004000" length="0x4000" mode="rwv" initialized="false"/>
+	<memory_block name="ERAY" start_address="0xf0010000" length="0x8000" mode="rwv" initialized="false"/>
 	<memory_block name="PCP.REG" start_address="0xf0043F00" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="PCP.PRAM" start_address="0xf0050000" length="0x4000" mode="rwv" initialized="false"/>
 	<memory_block name="PCP.CMEM" start_address="0xf0060000" length="0x8000" mode="rwv" initialized="false"/>
-	<memory_block name="SSC0" start_address="0xf0100100" length="0x100" mode="rwv" initialized="false"/>
-	<memory_block name="SSC1" start_address="0xf0100200" length="0x100" mode="rwv" initialized="false"/>
-	<memory_block name="FADC" start_address="0xf0100300" length="0x100" mode="rwv" initialized="false"/>
-	<memory_block name="ADC0" start_address="0xf0100400" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="SSC0" start_address="0xf0310000" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="SSC1" start_address="0xf0310100" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="SSC2" start_address="0xf0310200" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="SSC3" start_address="0xf0310300" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="FADC" start_address="0xf0100400" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="ADC0" start_address="0xf0101000" length="0x400" mode="rwv" initialized="false"/>
+	<memory_block name="ADC1" start_address="0xf0101400" length="0x400" mode="rwv" initialized="false"/>
+	<memory_block name="ADC2" start_address="0xf0101800" length="0x400" mode="rwv" initialized="false"/>
+	<memory_block name="ADC3" start_address="0xf0101c00" length="0x400" mode="rwv" initialized="false"/>
 	<memory_block name="MLI0" start_address="0xf010C000" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="MLI1" start_address="0xf010C100" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="MCHK" start_address="0xf010C200" length="0x100" mode="rwv" initialized="false"/>
@@ -51,8 +64,14 @@
 	<memory_block name="MLI1stw" start_address="0xf01e8000" length="0x8000" mode="rwv" initialized="false"/>
 	<memory_block name="MLI0ltw" start_address="0xf0200000" length="0x40000" mode="rwv" initialized="false"/>
 	<memory_block name="MLI1ltw" start_address="0xf0240000" length="0x40000" mode="rwv" initialized="false"/>
+	<memory_block name="FCE" start_address="0xf0320000" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="SHE" start_address="0xf0320200" length="0x100" mode="rwv" initialized="false"/>
+	<memory_block name="SENT" start_address="0xf0321000" length="0xa00" mode="rwv" initialized="false"/>
+	<memory_block name="BMU" start_address="0xf0323000" length="0x200" mode="rwv" initialized="false"/>
+	<memory_block name="BMURAM" start_address="0xf0324000" length="0x2000" mode="rwv" initialized="false"/>
 	<memory_block name="CPU.CPS" start_address="0xf7E0FF00" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="CPU.SFRGPR" start_address="0xf7E10000" length="0x10000" mode="rwv" initialized="false"/>
+	<memory_block name="EBU" start_address="0xf8000000" length="0x400" mode="rwv" initialized="false"/>
 	<memory_block name="PMU" start_address="0xf8000500" length="0x100" mode="rwv" initialized="false"/>
   <memory_block name="PMU1" start_address="0xf8000600" length="0x100" mode="rwv" initialized="false"/>
 	<memory_block name="PMUflash" start_address="0xf8001000" length="0x1400" mode="rwv" initialized="false"/>
