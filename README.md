@@ -5,11 +5,11 @@ TriCore processor module.
 
 Three processor spec files are provided:
 
-| File | Chip(s) | ADC kernels |
-|------|---------|-------------|
-| `tc179x.pspec` | TC1791 "512" variants, TC1793 | ADC0, ADC1, ADC2 |
-| `tc1791_384.pspec` | TC1791 "384" variants | ADC0, ADC1, ADC2 |
-| `tc1798.pspec` | TC1798 | ADC0, ADC1, ADC2, ADC3 |
+| File | Use for | Flash layout | ADC kernels |
+|------|---------|--------------|-------------|
+| `tc1791_384.pspec` | TC1791 `384` variants only | `PFLASH0 = 2 MB`, `PFLASH1 = 1 MB` | ADC0, ADC1, ADC2 |
+| `tc179x.pspec` | TC1791 `512` variants and all TC1793 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB` | ADC0, ADC1, ADC2 |
+| `tc1798.pspec` | TC1798 | `PFLASH0 = 2 MB`, `PFLASH1 = 2 MB` | ADC0, ADC1, ADC2, ADC3 |
 
 The `tc179x.pspec` covers all 4 MB devices with `PFLASH0 = 2 MB` and `PFLASH1 = 2 MB`.
 The `tc1791_384.pspec` is for the TC1791 3 MB devices where `PFLASH0 = 2 MB` and
