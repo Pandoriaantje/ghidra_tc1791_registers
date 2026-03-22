@@ -87,8 +87,8 @@ sudo patch -p1 < /path/to/patches/tc179x.ldefs.patch
 
 Restart Ghidra. Three new variants will be available when importing a binary:
 
-- **"Infineon Tricore Embedded Processor TC1791 / TC1793 (512 variant, 4MB flash)"** (`tricore:LE:32:tc179x`) — for TC1791 `512` / TC1793
 - **"Infineon Tricore Embedded Processor TC1791 (384 variant, 3MB flash)"** (`tricore:LE:32:tc1791_384`) — for TC1791 `384`
+- **"Infineon Tricore Embedded Processor TC1791 / TC1793 (512 variant, 4MB flash)"** (`tricore:LE:32:tc179x`) — for TC1791 `512` / TC1793
 - **"Infineon Tricore Embedded Processor TC1798 (512 variant, 4MB flash)"** (`tricore:LE:32:tc1798`) — for TC1798
 
 ## Loading Raw Flash Binaries
