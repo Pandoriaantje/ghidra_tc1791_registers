@@ -176,6 +176,9 @@ address conflict because those blocks already exist.
 
 - The patch only adds the TC179x, TC1791_384, and TC1798 entries; it does not touch any
   existing language definitions.
+- The initial imported pspec had an inherited off-by-one bug in the `PSPR`, `LDRAM`, and
+  `LMURAM` block lengths (`0x7fff` / `0x1ffff` instead of `0x8000` / `0x20000`). This was
+  caused by using the inclusive end offset as the XML `length` value.
 - If the patch fails after a Ghidra upgrade, inspect `tricore.ldefs` for context changes around
   the `</language_definitions>` closing tag and regenerate the patch accordingly.
 - Tested against Ghidra 11.x (`tricore.ldefs` version 1.7).
