@@ -14,7 +14,8 @@ Three processor spec files are provided:
 The `tc1791_384.pspec` is for the TC1791 3 MB devices where `PFLASH0 = 2 MB` and
 `PFLASH1 = 1 MB`. The `tc179x.pspec` covers all 4 MB TC1791 / TC1793 devices with
 `PFLASH0 = 2 MB` and `PFLASH1 = 2 MB`. The TC1798 adds a fourth ADC kernel (ADC3 at
-`0xF010_1C00`) and uses `tc1798.pspec`.
+`0xF010_1C00`) and uses `tc1798.pspec`. Raw binaries should be imported at base address
+`0x80000000`.
 
 **Note:** SHE (Secure Hardware Extension) registers appear in all three processor spec
 files. SHE is present on TC1798 and on some TC1791/TC1793 variants. The public
@@ -105,7 +106,9 @@ the existing `PFLASH0` / `PFLASH1` blocks in Ghidra.
 - Use `tricore:LE:32:tc179x` for TC1791 `512` and all TC1793 images
 - Use `tricore:LE:32:tc1798` for TC1798 images
 
-Import as **Raw Binary** with base address `0x80000000`.
+Import as **Raw Binary** and set the **base address to `0x80000000`**. If the file is
+loaded at `0x00000000`, Ghidra will create a generic `ram` block at the wrong address and
+leave `PFLASH0` / `PFLASH1` uninitialized.
 
 ### 2. Open the Memory Map
 
